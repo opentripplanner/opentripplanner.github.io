@@ -1,0 +1,19 @@
+---
+title: Blog
+layout: default
+---
+
+<div class="row">
+  <ul class="col-sm-12 posts">
+    {% for post in site.posts %}
+      <li>
+        <h2 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a> <img data-email="{{ post.email }}" data-size="200" class="pull-right gravatar" title="{{ post.author }}"></h2>
+        <span class="author">By {{ post.author }}</span>
+        <span class="date">{{ post.date | date_to_string }}</span>
+        <p>{{ post.excerpt }}</p>
+        <a href="{{ post.url }}">READ MORE</a>
+        <hr>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

@@ -1,0 +1,4 @@
+name: OpenTripPlanner
+markdown: redcarpet
+pygments: true
+permalink: /blog/:year/:month/:day/:title

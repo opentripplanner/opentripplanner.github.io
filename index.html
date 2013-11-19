@@ -1,0 +1,63 @@
+---
+layout: default
+title: Home
+class: home-page
+---
+
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <div class="col-sm-12">
+      <img src="/img/logo.png">
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="col-sm-12">
+    <h1>Multimodal trip planning &amp; analysis</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit sed est ut cursus. Aenean ut magna malesuada, semper orci vitae, ultrices dui. Curabitur erat quam, posuere pulvinar ornare sit amet, porta quis mauris. Nunc eget nibh ligula. Aliquam tortor ipsum, mattis et scelerisque eu, ultrices vitae tortor. Phasellus sit amet malesuada nunc, eu luctus nisi. Nulla placerat erat in nisi fringilla, eget vestibulum erat venenatis.</p>
+  </div>
+
+  <hr>
+
+  <ul class="nav nav-pills nav-justified">
+    <li><a href="/blog"><i class="fa fa-comments"></i> Blog</a></li>
+    <li><a href="http://github.com/opentripplanner"><i class="fa fa-code"></i> Code</a></li>
+    <li><a href="http://github.com/opentripplanner"><i class="fa fa-info"></i> Docs</a></li>
+  </ul>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <h1>OpenTripPlanner</h1>
+      <p>Once a transportation authority or operator has begun to regularly publish public transport schedule data in a machine readable open standard format, they anticipate the appearance of valuable services from external entrepreneurs and developers, usually in the form of smartphone applications and web services. They will be watching for specialized local applications to appear, and for existing large-scale applications to incorporate this new data source.</p>
+      <a href="/about">LEARN MORE</a>
+    </div>
+    <div class="col-sm-6">
+      <h1><i class="fa fa-bar-chart-o"></i> OTP <strong>Analyst</strong></h1>
+      <p>Once a transportation authority or operator has begun to regularly publish public transport schedule data in a machine readable open standard format, they anticipate the appearance of valuable services from external entrepreneurs and developers, usually in the form of smartphone applications and web services. They will be watching for specialized local applications to appear, and for existing large-scale applications to incorporate this new data source.</p>
+      <a href="/analyst">LEARN MORE</a>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <h1 class="col-sm-12">Latest Posts</h1>
+    <ul class="col-sm-12 posts">
+      {% for post in site.posts %}
+        <li>
+          <h3 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a> <img data-email="{{ post.email }}" data-size="200" class="pull-right gravatar" title="{{ post.author }}"></h3>
+          <span class="author">By {{ post.author }}</span>
+          <span class="date">{{ post.date | date_to_string }}</span>
+          <p>{{ post.excerpt }}</p>
+          <a href="{{ post.url }}">READ MORE</a>
+          <hr>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>

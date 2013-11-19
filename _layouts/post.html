@@ -1,0 +1,19 @@
+
+{% include header.html %}
+
+<div class="row">
+  <div class="col-sm-12">
+    <h2 class="post-title">{{ page.title }} <img class="pull-right gravatar" data-email="{{ page.email }}" title="{{ page.author }}"></h3>
+    <span class="author">By {{ page.author }}</span>
+    <span class="date">{{ page.date | date_to_string }}</span>
+  </div>
+  <article class="col-sm-12">{{ content }}</article>
+  <div class="col-sm-12">
+    <br>
+    <a href="/blog">SEE ALL POSTS</a></p>
+    <hr>
+  </div>
+</div>
+<br>
+
+{% include footer.html %}

@@ -1,0 +1,9 @@
+{
+  "name": "conveyal.github.io",
+  "paths": [
+    "lib"
+  ],
+  "local": [
+    "boot"
+  ]
+}

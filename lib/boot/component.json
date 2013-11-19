@@ -1,0 +1,23 @@
+{
+  "name": "boot",
+  "dependencies": {
+    "component/github-buttons": "*",
+    "ianstormtaylor/on-load": "*",
+    "ianstormtaylor/router": "*",
+    "learnboost/gravatar-component": "*",
+    "visionmedia/debug": "*"
+  },
+  "local": [
+    "mapify"
+  ],
+  "scripts": [
+    "index.js",
+    "list-repositories.js",
+    "load-gravatars.js",
+    "mapbox.js"
+  ],
+  "styles": [
+    "style.css",
+    "syntax.css"
+  ]
+}
