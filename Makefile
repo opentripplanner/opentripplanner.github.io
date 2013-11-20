@@ -4,7 +4,7 @@ JS := $(shell find lib -name '*.js' -print)
 
 build: components $(JS) $(CSS)
 	$(MAKE) lint
-	component build --dev --verbose
+	component build --copy --dev --verbose
 
 components: component.json
 	component install --dev --verbose
