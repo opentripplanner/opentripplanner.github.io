@@ -19,5 +19,11 @@
   "styles": [
     "style.css",
     "syntax.css"
+  ],
+  "images": [
+    "jumbotron.png",
+    "jumbotron@2x.png",
+    "logo.png",
+    "logo@2x.png"
   ]
 }

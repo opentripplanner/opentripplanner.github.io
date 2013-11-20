@@ -171,20 +171,45 @@ body {
 }
 
 .jumbotron {
+  background-image: url(".//boot/./jumbotron.png");
+  background-size: auto 100%;
+  background-repeat: no-repeat;
   background-color: #36309c;
+  background-position-x: center;
+  border-bottom: 1px solid #36309c;
+}
+
+.jumbotron .container {
+  width: 392px;
+}
+
+.jumbotron .logo {
+  width: 300px;
+  height: 238px;
+  background-image: url(".//boot/./logo.png");
+  background-size: 100%;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+    only screen and (-o-min-device-pixel-ratio: 3/2),
+    only screen and (min--moz-device-pixel-ratio: 1.5),
+    only screen and (min-device-pixel-ratio: 1.5) {
+
+  .jumbotron {
+    background-image: url(".//boot/./jumbotron@2x.png");
+  }
+
+  .jumbotron .logo {
+    background-image: url(".//boot/./logo@2x.png");
+  }
 }
 
 .jumbotron .col-sm-12 {
   background-color: white;
-  border: 1px solid #e7e7e7;
+  border: 1px solid #36309c;
   border-radius: 15px;
   padding: 30px;
   text-align: center;
-}
-
-.jumbotron img {
-  max-width: 300px;
-  width: 100%;
 }
 
 .row {
