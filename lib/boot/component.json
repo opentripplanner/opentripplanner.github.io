@@ -17,6 +17,9 @@
     "mapbox.js"
   ],
   "styles": [
+    "base.css",
+    "nav.css",
+    "post.css",
     "style.css",
     "syntax.css"
   ],
@@ -24,6 +27,8 @@
     "jumbotron.png",
     "jumbotron@2x.png",
     "logo.png",
-    "logo@2x.png"
+    "logo@2x.png",
+    "nav.png",
+    "nav@2x.png"
   ]
 }

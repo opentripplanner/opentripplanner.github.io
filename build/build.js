@@ -2105,38 +2105,6 @@ function boot() {\n\
   // init router\n\
   var router = new Router();\n\
 \n\
-  // about page\n\
-  router.on('/about', function (ctx) {\n\
-    debug('/about');\n\
-\n\
-    var currentLocation = 0;\n\
-    var locations = [\n\
-      [ 38.905928908455046, -77.05111026763916 ], // D.C.\n\
-      [ 48.87, 2.32 - 0.025 ], // Paris\n\
-      [ 33.76, -84.38 - 0.025 ] // Atlanta\n\
-    ];\n\
-\n\
-    var $mapbox = document.querySelector('.mapbox');\n\
-    var map = mapify($mapbox, {\n\
-      touchZoom: false,\n\
-      scrollWheelZoom: false,\n\
-    });\n\
-\n\
-    setInterval(function() {\n\
-      currentLocation = currentLocation === 2\n\
-        ? 0\n\
-        : currentLocation + 1;\n\
-      $($mapbox).animate({\n\
-        opacity: 0\n\
-      }, 600, function () {\n\
-        map.panTo(locations[currentLocation]);\n\
-        $($mapbox).animate({\n\
-          opacity: 1\n\
-        }, 600);\n\
-      });\n\
-    }, 6000);\n\
-  });\n\
-\n\
   router.on('/blog/:year/:month/:date/:title', function (ctx) {\n\
     debug('/blog/%s/%s/%s/%s', ctx.params.year, ctx.params.month, ctx.params.date, ctx.params.title);\n\
 \n\

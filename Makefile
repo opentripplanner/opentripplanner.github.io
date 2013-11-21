@@ -17,7 +17,7 @@ lint: $(JS)
 	jshint $(JS)
 
 serve:
-	jekyll serve --watch --drafts
+	jekyll serve --watch --drafts --port 4001
 
 watch:
 	watch $(MAKE) build

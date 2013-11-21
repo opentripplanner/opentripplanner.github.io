@@ -17,7 +17,7 @@ class: home-page
 <div class="container">
 
   <div class="col-sm-12">
-    <h1>Multimodal trip planning &amp; analysis</h1>
+    <h1 class="slogan">Multimodal trip planning &amp; analysis</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit sed est ut cursus. Aenean ut magna malesuada, semper orci vitae, ultrices dui. Curabitur erat quam, posuere pulvinar ornare sit amet, porta quis mauris. Nunc eget nibh ligula. Aliquam tortor ipsum, mattis et scelerisque eu, ultrices vitae tortor. Phasellus sit amet malesuada nunc, eu luctus nisi. Nulla placerat erat in nisi fringilla, eget vestibulum erat venenatis.</p>
   </div>
 
@@ -37,28 +37,58 @@ class: home-page
       <h1>OpenTripPlanner</h1>
       <p>Once a transportation authority or operator has begun to regularly publish public transport schedule data in a machine readable open standard format, they anticipate the appearance of valuable services from external entrepreneurs and developers, usually in the form of smartphone applications and web services. They will be watching for specialized local applications to appear, and for existing large-scale applications to incorporate this new data source.</p>
       <a href="/about">LEARN MORE</a>
+      <hr>
     </div>
     <div class="col-sm-6">
       <h1><i class="fa fa-bar-chart-o"></i> OTP <strong>Analyst</strong></h1>
       <p>Once a transportation authority or operator has begun to regularly publish public transport schedule data in a machine readable open standard format, they anticipate the appearance of valuable services from external entrepreneurs and developers, usually in the form of smartphone applications and web services. They will be watching for specialized local applications to appear, and for existing large-scale applications to incorporate this new data source.</p>
       <a href="/analyst">LEARN MORE</a>
+      <hr>
     </div>
   </div>
 
-  <hr>
-
-  <div class="row">
-    <h1 class="col-sm-12">Latest Posts</h1>
-    <ul class="col-sm-12 posts">
-      {% for post in site.posts %}
-        <li>
-          <h3 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a> <img data-email="{{ post.email }}" data-size="200" class="pull-right gravatar" title="{{ post.author }}"></h3>
+  <ul class="row posts">
+    {% for post in paginator.posts %}
+      <li class="col-sm-12 post">
+        <a href="{{ post.url }}" title="{{ post.title }}">
+          <img data-email="{{ post.email }}" data-size="200" class="gravatar" title="{{ post.author }}">
+          <h2 class="post-title">{{ post.title }}</h2>
           <span class="author">By {{ post.author }}</span>
           <span class="date">{{ post.date | date_to_string }}</span>
           <p>{{ post.excerpt }}</p>
-          <a href="{{ post.url }}">READ MORE</a>
           <hr>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+
+  {% if paginator.total_pages > 1 %}
+    <div class="row">
+      <div class="col-sm-12" style="text-align:center;">
+        <ul class="pagination">
+
+          {% if paginator.previous_page %}
+            <li><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo;</a></li>
+          {% else %}
+            <li class="disabled"><a>&laquo;</a></li>
+          {% endif %}
+
+          {% for page in (1..paginator.total_pages) %}
+            {% if page == paginator.page %}
+              <li class="active"><a href="">{{ page }}</a></li>
+            {% elsif page == 1 %}
+              <li><a href="/blog">{{ page }}</a></li>
+            {% else %}
+              <li><a href="/blog/page{{ page }}">{{ page }}</a></li>
+            {% endif %}
+          {% endfor %}
+
+          {% if paginator.next_page %}
+            <li><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">&raquo;</a></li>
+          {% else %}
+            <li class="disabled"><a>&raquo;</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  {% endif %}

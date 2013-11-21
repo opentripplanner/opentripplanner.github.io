@@ -1,0 +1,95 @@
+
+article {
+  margin-top: 15px;
+}
+
+article h1 {
+  margin-bottom: 10px;
+}
+
+article img {
+  max-width: 100%;
+}
+
+article .mapbox {
+  min-height: 300px;
+  margin-bottom: 10px;
+  border: 1px solid #e7e7e7;
+}
+
+article ul, article ol {
+  padding-left: 22px;
+}
+
+article p {
+  word-wrap: break-word;
+}
+
+.article-footer {
+  text-align: center;
+}
+
+.article-footer .gravatar {
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
+  border: 1px solid #e7e7e7;
+  background-color: #e7e7e7;
+}
+
+.posts {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.posts p {
+  margin: 15px 0 20px;
+}
+
+.post a .author,
+.post a p {
+  color: #333;
+}
+
+.post .gravatar {
+  height: 60px;
+  width: 60px;
+  margin-left: -80px;
+  border-radius: 30px;
+  border: 1px solid #e7e7e7;
+  background-color: #e7e7e7;
+  position: absolute;
+}
+
+.posts-small .post {
+  padding-top: 20px;
+  padding-right: 30px;
+}
+
+.posts-small .post:nth-child(2) {
+  padding-left: 30px;
+  padding-right: 15px;
+}
+
+@media (max-width: 768px) {
+  .posts-small .post,
+  .posts-small .post:nth-child(2) {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+.posts-small .post-title {
+  margin-top: 0;
+}
+
+.posts-small .gravatar {
+  height: 40px;
+  width: 40px;
+  margin-left: -60px;
+  border-radius: 20px;
+}
+
+.posts-small .post p {
+  margin-bottom: 40px;
+}
