@@ -160,6 +160,7 @@
 
 
 
+
 body {
   font-weight: 300;
   padding-top: 88px;
@@ -214,7 +215,7 @@ pre {
 
 /* Phone, etc. */
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   body {
     padding-top: 68px;
   }
@@ -245,7 +246,7 @@ pre {
   margin-bottom: 30px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .navbar {
     margin-bottom: 15px;
   }
@@ -321,7 +322,7 @@ article p {
 .post .gravatar {
   height: 60px;
   width: 60px;
-  margin-left: -80px;
+  margin-left: -70px;
   border-radius: 30px;
   border: 1px solid #e7e7e7;
   background-color: #e7e7e7;
@@ -338,7 +339,7 @@ article p {
   padding-right: 15px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .posts-small .post,
   .posts-small .post:nth-child(2) {
     padding-right: 15px;
@@ -400,7 +401,7 @@ body {
   height: 100%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .jumbotron {
     padding: 15px;
   }
@@ -461,7 +462,7 @@ hr {
   background-position-x: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .navbar-inverse {
     background-size: auto 50px;
   }

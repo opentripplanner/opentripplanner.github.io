@@ -54,7 +54,7 @@ article p {
 .post .gravatar {
   height: 60px;
   width: 60px;
-  margin-left: -80px;
+  margin-left: -70px;
   border-radius: 30px;
   border: 1px solid #e7e7e7;
   background-color: #e7e7e7;
@@ -71,7 +71,7 @@ article p {
   padding-right: 15px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .posts-small .post,
   .posts-small .post:nth-child(2) {
     padding-right: 15px;

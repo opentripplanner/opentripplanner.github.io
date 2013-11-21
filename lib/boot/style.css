@@ -37,7 +37,7 @@ body {
   height: 100%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .jumbotron {
     padding: 15px;
   }
@@ -98,7 +98,7 @@ hr {
   background-position-x: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .navbar-inverse {
     background-size: auto 50px;
   }

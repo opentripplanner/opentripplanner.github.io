@@ -53,7 +53,7 @@ pre {
 
 /* Phone, etc. */
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   body {
     padding-top: 68px;
   }

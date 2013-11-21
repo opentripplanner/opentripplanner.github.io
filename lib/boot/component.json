@@ -5,6 +5,7 @@
     "ianstormtaylor/on-load": "*",
     "ianstormtaylor/router": "*",
     "learnboost/gravatar-component": "*",
+    "trevorgerhardt/tap-to-click": "*",
     "visionmedia/debug": "*"
   },
   "local": [

@@ -1908,6 +1908,148 @@ exports.profile = function (email, fn) {\n\
 };\n\
 //@ sourceURL=learnboost-gravatar-component/gravatar.js"
 ));
+require.register("trevorgerhardt-tap-to-click/index.js", Function("exports, require, module",
+"\n\
+/**\n\
+ * Dependencies\n\
+ */\n\
+\n\
+var debug = require('debug')('tap-to-click')\n\
+\n\
+/**\n\
+ * Expose `capture`\n\
+ */\n\
+\n\
+module.exports = capture;\n\
+\n\
+/**\n\
+ * Is touch moving?\n\
+ */\n\
+\n\
+var moving = false;\n\
+\n\
+/**\n\
+ * Recent click?\n\
+ */\n\
+\n\
+var recentClick = false;\n\
+\n\
+/**\n\
+ * dblclick timeout\n\
+ */\n\
+\n\
+var timeout = 500;\n\
+\n\
+/**\n\
+ * isAndroid?\n\
+ */\n\
+\n\
+var isAndroid = window.device !== undefined && window.device.platform === 'Android';\n\
+\n\
+/**\n\
+ * Add listeners for all touch events\n\
+ */\n\
+\n\
+function capture(customTimeout) {\n\
+  timeout = customTimeout || timeout;\n\
+\n\
+  document.addEventListener('touchstart', handler, true);\n\
+  document.addEventListener('touchmove', handler, true);\n\
+  document.addEventListener('touchend', handler, true);\n\
+  document.addEventListener('touchcancel', handler, true);\n\
+}\n\
+\n\
+/**\n\
+ * Handle all touch events\n\
+ */\n\
+\n\
+function handler(event) {\n\
+  var touch = event.changedTouches[0]\n\
+    , target = touch.target\n\
+    , tagName = target.tagName.toLowerCase()\n\
+    , type = event.type\n\
+    , isInput = tagName === 'input' || tagName === 'textarea' || tagName === 'select';\n\
+\n\
+  debug('handling: %s %s', type, tagName);\n\
+\n\
+  switch(type) {\n\
+  case 'touchstart': \n\
+    moving = false;\n\
+    dispatch('mousedown', touch);\n\
+\n\
+    if (!isInput && target.setActive) {\n\
+      debug('setting target active');\n\
+      target.setActive();\n\
+    }\n\
+    break;\n\
+  case 'touchmove':\n\
+    moving = true;\n\
+    dispatch('mousemove', touch); \n\
+    break;        \n\
+  case 'touchend':\n\
+    // If the user wasn't moving\n\
+    if (!moving && !isAndroid) {\n\
+      event.preventDefault();\n\
+\n\
+      // dispatch a click event\n\
+      dispatch('click', touch);\n\
+\n\
+      // If there has been a recent click\n\
+      if (recentClick) {\n\
+        dispatch('dblclick', touch);\n\
+      }\n\
+\n\
+      // Set the recent click to be true and set a timeout to disable it\n\
+      recentClick = true;\n\
+      setTimeout(function() {\n\
+        recentClick = false;\n\
+      }, timeout);\n\
+    } else {\n\
+      dispatch('mouseup', touch);\n\
+    }\n\
+\n\
+    // Focus if it's an input\n\
+    if (isInput) {\n\
+      target.focus();\n\
+    } else {\n\
+      target.blur();\n\
+    }\n\
+    \n\
+    moving = false;\n\
+    break;\n\
+  case 'touchcancel':\n\
+    break;\n\
+  }\n\
+}\n\
+\n\
+/**\n\
+ * Dispatch a simulated event\n\
+ */\n\
+\n\
+function dispatch(type, touch) {\n\
+  var simulatedEvent = document.createEvent('MouseEvent');\n\
+  simulatedEvent.initMouseEvent(\n\
+      type\n\
+    , true // canBubble\n\
+    , true // cancelable\n\
+    , window // view\n\
+    , (type === 'dblclick' ? 2 : 1) // detail (click count)\n\
+    , touch.screenX\n\
+    , touch.screenY\n\
+    , touch.clientX\n\
+    , touch.clientY\n\
+    , false // ctrlKey\n\
+    , false // altKey\n\
+    , false // shiftKey\n\
+    , false // metaKey\n\
+    , 0 // button\n\
+    , null // relatedTarget\n\
+  );\n\
+  debug('dispatching: %s %s ', type, touch.target.tagName);\n\
+  touch.target.dispatchEvent(simulatedEvent);\n\
+}\n\
+//@ sourceURL=trevorgerhardt-tap-to-click/index.js"
+));
 require.register("visionmedia-debug/index.js", Function("exports, require, module",
 "if ('undefined' == typeof window) {\n\
   module.exports = require('./lib/debug');\n\
@@ -2081,10 +2223,17 @@ require.register("boot/index.js", Function("exports, require, module",
  * Dependencies\n\
  */\n\
 \n\
+var capture = require('tap-to-click');\n\
 var debug = require('debug')('boot');\n\
 var ghbuttons = require('github-buttons');\n\
 var mapify = require('mapify');\n\
 var Router = require('router');\n\
+\n\
+/**\n\
+ * Capture taps\n\
+ */\n\
+\n\
+capture();\n\
 \n\
 /**\n\
  * Wait until the document has loaded\n\
@@ -2216,6 +2365,8 @@ for (var i in els) {\n\
 
 
 
+
+
 require.alias("boot/index.js", "conveyal.github.io/deps/boot/index.js");
 require.alias("boot/list-repositories.js", "conveyal.github.io/deps/boot/list-repositories.js");
 require.alias("boot/load-gravatars.js", "conveyal.github.io/deps/boot/load-gravatars.js");
@@ -2285,6 +2436,12 @@ require.alias("component-querystring/index.js", "learnboost-gravatar-component/d
 require.alias("component-trim/index.js", "component-querystring/deps/trim/index.js");
 
 require.alias("learnboost-gravatar-component/gravatar.js", "learnboost-gravatar-component/index.js");
+require.alias("trevorgerhardt-tap-to-click/index.js", "boot/deps/tap-to-click/index.js");
+require.alias("trevorgerhardt-tap-to-click/index.js", "boot/deps/tap-to-click/index.js");
+require.alias("visionmedia-debug/index.js", "trevorgerhardt-tap-to-click/deps/debug/index.js");
+require.alias("visionmedia-debug/debug.js", "trevorgerhardt-tap-to-click/deps/debug/debug.js");
+
+require.alias("trevorgerhardt-tap-to-click/index.js", "trevorgerhardt-tap-to-click/index.js");
 require.alias("visionmedia-debug/index.js", "boot/deps/debug/index.js");
 require.alias("visionmedia-debug/debug.js", "boot/deps/debug/debug.js");
 
