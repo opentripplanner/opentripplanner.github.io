@@ -1,9 +1,0 @@
-{
-  "name": "mapify",
-  "dependencies": {
-    "visionmedia/debug": "*"
-  },
-  "scripts": [
-    "index.js"
-  ]
-}

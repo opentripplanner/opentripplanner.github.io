@@ -1,6 +1,0 @@
-name: OpenTripPlanner
-markdown: redcarpet
-pygments: true
-paginate: 5
-permalink: /blog/:year/:month/:day/:title
-paginate_path: "blog/page:num"
